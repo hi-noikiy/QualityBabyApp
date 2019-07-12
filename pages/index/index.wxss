@@ -1,0 +1,6 @@
+/**index.wxss**/
+.group-menu{
+  text-align: center;
+}
+.group-element{
+}

@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/activity/activity-index/index",
+    "pages/message/message-index/index",
+    "pages/mine/mine-index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6ffed",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#1afa29",
+    "borderStyle": "black",
+    "backgroundColor": "#f6ffed",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-select.png"
+      },
+      {
+        "pagePath": "pages/activity/activity-index/index",
+        "text": "活动",
+        "iconPath": "assets/icons/activity.png",
+        "selectedIconPath": "assets/icons/activity-select.png"
+      },
+      {
+        "pagePath": "pages/message/message-index/index",
+        "text": "留言",
+        "iconPath": "assets/icons/message.png",
+        "selectedIconPath": "assets/icons/message-select.png"
+      },
+      {
+        "pagePath": "pages/mine/mine-index/index",
+        "text": "个人",
+        "iconPath": "assets/icons/mine.png",
+        "selectedIconPath": "assets/icons/mine-select.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "wux-icon": "../../dist/icon/index",
+    "wux-badge": "../../dist/badge/index",
+    "wux-tabbar": "../../dist/tabbar/index",
+    "wux-tabbar-item": "../../dist/tabbar-item/index",
+    "wux-white-space": "../../dist/white-space/index",
+    "wux-wing-blank": "../../dist/wing-blank/index",
+    "wux-white-space": "../../dist/white-space/index",
+    "wux-grids": "../../dist/grids/index",
+    "wux-grid": "../../dist/grid/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "wux-card": "../../dist/card/index",
+    "wux-wing-blank": "../../dist/wing-blank/index",
+    "wux-row": "../../dist/row/index",
+    "wux-col": "../../dist/col/index",
+    "wux-image": "../../dist/image/index"
+  }
+}
