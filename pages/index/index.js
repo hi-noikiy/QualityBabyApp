@@ -1,5 +1,39 @@
+var http=require("../../utils/http.js")
+var myWx=require("../../utils/wx.js")
+var util=require("../../utils/util.js")
+var indexApi = require("../../utils/api/index.js")
+import {
+  message
+} from "../../utils/api/message.js"
 Page({
   data: {
+    messageList: [{
+      messageId: null,
+      messageTime: null,
+      messageDetail: null,
+      messageLike: null,
+      messageShow: null,
+      userId: null,
+      user: {
+        userId: null,
+        stuId: null,
+        tellNum: null,
+        className: null,
+        gender: null,
+        stuName: null,
+        openId: null,
+        signUpTime: null,
+        userIcon: null
+      }
+    }],
+    activityGroupList:[{
+      groupId: null,
+      groupName: null,
+      groupShow: null,
+      groupIcon: null,
+      groupSort: null,
+      groupAddTime: null
+    }],
     cardCur: 0, // 轮播图当前展示页
     swiperList: [{ // 轮播图列表
       id: 0, // 轮播图ID
@@ -34,8 +68,15 @@ Page({
   onLoad() {
     // 初始化towerSwiper 传已有的数组名即可
     this.towerSwiper('swiperList');
+    myWx.login();
   },
-
+  onReady(e){
+    if (!util.isLogin()) {
+      this.openType();
+    }
+    this.getMessage();
+    this.getActivityGroup();
+  },
   DotStyle(e) {
     this.setData({
       DotStyle: e.detail.value
@@ -100,5 +141,47 @@ Page({
         swiperList: list
       })
     }
+  },
+  /**
+   *  提示获取用户信息
+   */
+  openType() {
+    myWx.getUserInfo();
+  },
+  /**
+   * 访问得到留言信息
+   */
+  getMessage: function () {
+    var that = this
+    indexApi.getMessage( function (e) {
+      // 临时变量存储
+      var messageListTemp = e.data.list;
+      // 创建对象数组
+      var messageList =  that.data.messageList;
+      // 遍历数组
+      for (let messageTemp in messageListTemp) {
+        // 获取用户
+        indexApi.getMessageUser(messageListTemp[messageTemp].userId, function (e) {
+          // 通过获得到的用户信息来构建对象
+          messageList[messageTemp] = new message(messageListTemp[messageTemp], e.data)
+          // 渲染该对象
+          // 这里可以考虑怎么去优化一下
+          that.setData({
+            messageList: messageList
+          })
+        })
+      }
+    })
+  },
+  /**
+   * 访问得到活动分组信息
+   */
+  getActivityGroup:function(){
+    var that=this
+    indexApi.getActivityGroup(function(e){
+      that.setData({
+        activityGroupList:e.data.list
+      })
+    })
   }
 })

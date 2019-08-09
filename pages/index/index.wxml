@@ -43,27 +43,15 @@
   </view>
   <!-- 活动 -->
   <view class="cu-list grid col-4 no-border  bg-green light">
-    <view class='group-menu'>
+    <view class='group-menu' wx:for="{{activityGroupList}}" wx:key="{{item.groupId}}">
       <view class='group-element'>
-        <wux-icon type="ios-podium" size="26" />
-        <view>讲座</view>
+        <view class="cu-avatar " style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
+        <view>{{item.groupName}}</view>
       </view>
     </view>
     <view class='group-menu'>
       <view class='group-element'>
-        <wux-icon type="ios-planet" size="26" />
-        <view>课程</view>
-      </view>
-    </view>
-    <view class='group-menu'>
-      <view class='group-element'>
-        <wux-icon type="ios-play" size="26" />
-        <view>小课堂</view>
-      </view>
-    </view>
-    <view class='group-menu'>
-      <view class='group-element'>
-        <wux-icon type="ios-more" size="26" />
+        <wux-icon type="ios-more" size="26"style="font-size:26px;" />
         <view>更多活动</view>
       </view>
     </view>
@@ -76,7 +64,7 @@
   <wux-wing-blank style="font-size:35rpx;">
     <wux-cell title="我的排名" is-link>
       <view slot="footer">
-        <text space="ensp" style='color:red;font-size:60rpx;'>10/120 </text>
+        <text class='index-rank' space="ensp">10/120 </text>
       </view>
     </wux-cell>
   </wux-wing-blank>
@@ -88,41 +76,24 @@
   <wux-wing-blank>
     <wux-card full title="最近留言" prefixCls="bg-green light wux-card">
       <view slot="body">
-        <!-- 第一条留言 -->
-        <wux-cell title="张星宇">
-          <view slot="footer">
-            <text>19/07/12 17:31</text>
+        <view>
+          <view wx:for="{{messageList}}" wx:key="{{item.messageKey}}">
+            <wux-cell class='message-element' title="{{item.user.stuName}}">
+              <view slot="footer">
+                <text>{{item.messageTime}}</text>
+              </view>
+              <view slot="header">
+                <view class="cu-avatar round" style="background-image:url({{item.user.userIcon}}); margin-right:15rpx;"></view>
+              </view>
+            </wux-cell>
+            <view style='margin-left:30rpx;margin-right:30rpx;'>{{item.messageDetail}}</view>
           </view>
-          <view slot="header">
-            <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg); margin-right:15rpx;"></view>
-          </view>
-        </wux-cell>
-        <view style='margin-left:30rpx;margin-right:30rpx;'>这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺</view><wux-cell title="张星宇">
-          <view slot="footer">
-            <text>19/07/12 17:31</text>
-          </view>
-          <view slot="header">
-            <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg); margin-right:15rpx;"></view>
-          </view>
-        </wux-cell>
-        <view style='margin-left:30rpx;margin-right:30rpx;'>这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺</view><wux-cell title="张星宇">
-          <view slot="footer">
-            <text>19/07/12 17:31</text>
-          </view>
-          <view slot="header">
-            <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg); margin-right:15rpx;"></view>
-          </view>
-        </wux-cell>
-        <view style='margin-left:30rpx;margin-right:30rpx;'>这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺</view><wux-cell title="张星宇">
-          <view slot="footer">
-            <text>19/07/12 17:31</text>
-          </view>
-          <view slot="header">
-            <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg); margin-right:15rpx;"></view>
-          </view>
-        </wux-cell>
-        <view style='margin-left:30rpx;margin-right:30rpx;'>这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺这个软件做的实在是不错哈，力挺</view>
+          <wux-white-space />
+        </view>
       </view>
     </wux-card>
   </wux-wing-blank>
 </view>
+
+<!-- 获取用户信息 -->
+<wux-dialog id="wux-dialog" />

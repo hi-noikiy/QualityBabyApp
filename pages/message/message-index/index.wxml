@@ -1,2 +1,31 @@
-<!--pages/message/message-index/index.wxml-->
-<text>留言主页</text>
+<!-- 最近评论区 -->
+<view class="bg-green light compent-message">
+  <wux-white-space />
+  <wux-wing-blank>
+    <form>
+      <view class="cu-form-group margin-top">
+        <textarea maxlength="255" bindinput="inputMessage" placeholder="多行文本输入框"></textarea>
+      </view>
+      <view class='from-button'>
+        <button class="cu-btn bg-green round" style='margin-right:20rpx;margin-bottom:20rpx;'>留言</button>
+      </view>
+    </form>
+  </wux-wing-blank>
+  <wux-white-space />
+  <wux-wing-blank>
+    <view>
+      <view wx:for="{{messageList}}" wx:key="{{item.messageKey}}">
+        <wux-cell class='message-element' title="{{item.user.stuName}}">
+          <view slot="footer">
+            <text>{{item.messageTime}}</text>
+          </view>
+          <view slot="header">
+            <view class="cu-avatar round" style="background-image:url({{item.user.userIcon}}); margin-right:15rpx;"></view>
+          </view>
+        </wux-cell>
+        <view style='margin-left:30rpx;margin-right:30rpx;'>{{item.messageDetail}}</view>
+      </view>
+      <wux-white-space />
+    </view>
+  </wux-wing-blank>
+</view>

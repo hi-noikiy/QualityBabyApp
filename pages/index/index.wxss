@@ -1,6 +1,18 @@
 /**index.wxss**/
-.group-menu{
+
+.group-menu {
   text-align: center;
 }
-.group-element{
+
+.group-element {
+}
+
+.index-message {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.index-rank {
+  color: red;
+  font-size: 60rpx;
 }
