@@ -9,9 +9,16 @@ function getMessageUser(userId, success) {
 function getActivityGroup(success){
   http.getRequest("/activity-group?pageNum=1&pageSize=3",success)
 }
+function getActivity(success){
+  http.getRequest("/activity?pageNum=1&pageSize=6",success)
+}
+function judgeAnswered(userId,success){
+  http.getRequest("/answer/"+userId,success)
+}
 module.exports = {
   getMessage: getMessage,
   getMessageUser: getMessageUser,
   getActivityGroup: getActivityGroup,
-  
+  getActivity: getActivity,
+  judgeAnswered: judgeAnswered
 }

@@ -1,7 +1,8 @@
-var http=require("../../utils/http.js")
-var myWx=require("../../utils/wx.js")
-var util=require("../../utils/util.js")
+var http = require("../../utils/http.js")
+var myWx = require("../../utils/wx.js")
+var util = require("../../utils/util.js")
 var indexApi = require("../../utils/api/index.js")
+var userApi = require("../../utils/api/user.js")
 import {
   message
 } from "../../utils/api/message.js"
@@ -26,7 +27,7 @@ Page({
         userIcon: null
       }
     }],
-    activityGroupList:[{
+    activityGroupList: [{
       groupId: null,
       groupName: null,
       groupShow: null,
@@ -35,47 +36,33 @@ Page({
       groupAddTime: null
     }],
     cardCur: 0, // 轮播图当前展示页
-    swiperList: [{ // 轮播图列表
-      id: 0, // 轮播图ID
-      type: 'image', // 轮播图类型，一般为image
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg' // 图片地址
-    }, {
-      id: 1,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
+    swiperList: [{
+      activityId: 10,
+      activityName: "活动名1223456",
+      activityInformation: "活动结合少",
+      activityImg: "https://pangyuworld.github.io/assets/p4YBAFtjvnOAa7uqAABMXc2dvOk667_n-1557808233634.jpg",
+      activityPersonNum: 11,
+      activityStart: "2019-07-05 16:21:35",
+      activityEnd: "2019-07-05 16:21:37",
+      activityStartSignUp: "2019-07-05 16:21:40",
+      activityEndSignUp: "2019-07-05 16:21:42",
+      activityShow: true,
+      groupId: 1,
     }],
   },
   onLoad() {
     // 初始化towerSwiper 传已有的数组名即可
     this.towerSwiper('swiperList');
-    myWx.login();
   },
-  onReady(e){
+  onReady(e) {
+    myWx.login();
+    // 判断是否登录
     if (!util.isLogin()) {
       this.openType();
     }
     this.getMessage();
     this.getActivityGroup();
+    this.getActivity();
   },
   DotStyle(e) {
     this.setData({
@@ -146,22 +133,42 @@ Page({
    *  提示获取用户信息
    */
   openType() {
-    myWx.getUserInfo();
+    var that = this
+    myWx.getUserInfo(() => {
+      userApi.getUserByOpenId(util.getGlobalLoginInfo().openId, (res) => {
+        // 如果用户信息存在的话
+        if (!util.strIsEmpty(res.data)) {
+          util.setGlobalUserInfoByServer(res.data)
+          // 判断是否回答了问卷
+          indexApi.judgeAnswered(res.data.userId, () => {
+            // 如果没有回答问卷，则跳转到回答问卷页面
+            wx.navigateTo({
+              url: '/pages/question/question',
+            })
+          })
+        } else {
+          // 否则进入一个注册界面
+          wx.navigateTo({
+            url: '/pages/welcome/welcome',
+          })
+        }
+      })
+    });
   },
   /**
    * 访问得到留言信息
    */
-  getMessage: function () {
+  getMessage: function() {
     var that = this
-    indexApi.getMessage( function (e) {
+    indexApi.getMessage(function(e) {
       // 临时变量存储
       var messageListTemp = e.data.list;
       // 创建对象数组
-      var messageList =  that.data.messageList;
+      var messageList = that.data.messageList;
       // 遍历数组
       for (let messageTemp in messageListTemp) {
         // 获取用户
-        indexApi.getMessageUser(messageListTemp[messageTemp].userId, function (e) {
+        indexApi.getMessageUser(messageListTemp[messageTemp].userId, function(e) {
           // 通过获得到的用户信息来构建对象
           messageList[messageTemp] = new message(messageListTemp[messageTemp], e.data)
           // 渲染该对象
@@ -176,11 +183,22 @@ Page({
   /**
    * 访问得到活动分组信息
    */
-  getActivityGroup:function(){
-    var that=this
-    indexApi.getActivityGroup(function(e){
+  getActivityGroup: function() {
+    var that = this
+    indexApi.getActivityGroup(function(e) {
       that.setData({
-        activityGroupList:e.data.list
+        activityGroupList: e.data.list
+      })
+    })
+  },
+  /**
+   * 获取活动信息
+   */
+  getActivity: function() {
+    var that = this
+    indexApi.getActivity(function(e) {
+      that.setData({
+        swiperList: e.data.list
       })
     })
   }

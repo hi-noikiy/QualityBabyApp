@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/question/question",
     "pages/index/index",
     "pages/activity/activity-index/index",
     "pages/message/message-index/index",
-    "pages/mine/mine-index/index"
+    "pages/mine/mine-index/index",
+    "pages/welcome/welcome"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -51,13 +53,11 @@
     "wux-tabbar-item": "../../dist/tabbar-item/index",
     "wux-white-space": "../../dist/white-space/index",
     "wux-wing-blank": "../../dist/wing-blank/index",
-    "wux-white-space": "../../dist/white-space/index",
     "wux-grids": "../../dist/grids/index",
     "wux-grid": "../../dist/grid/index",
     "wux-cell-group": "../../dist/cell-group/index",
     "wux-cell": "../../dist/cell/index",
     "wux-card": "../../dist/card/index",
-    "wux-wing-blank": "../../dist/wing-blank/index",
     "wux-row": "../../dist/row/index",
     "wux-col": "../../dist/col/index",
     "wux-image": "../../dist/image/index",

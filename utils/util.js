@@ -18,7 +18,7 @@ function setGlobalUserInfo(userInfo) {
 }
 // 设置全局的用户信息(获取后台的用户信息)
 function setGlobalUserInfoByServer(userInfo) {
-  getApp().globalData.userInfo.openId = userInfo.openId;
+  getApp().globalData.userInfo.openId = getGlobalLoginInfo().openId;
   getApp().globalData.userInfo.signUpTime = userInfo.signUpTime;
   getApp().globalData.userInfo.stuId = userInfo.stuId;
   getApp().globalData.userInfo.stuName = userInfo.stuName;
@@ -41,11 +41,7 @@ function strIsEmpty(str) {
 }
 // 判断是否已经登录
 function isLogin() {
-  return getApp().globalData.judge.isLogin
-}
-// 设置已登录状态
-function setLoginStatus() {
-  getApp().globalData.judge.isLogin = true;
+  return !strIsEmpty(getApp().globalData.userInfo.nickName)
 }
 //创建时间格式化显示
 function formatTime(value) {
@@ -64,7 +60,6 @@ module.exports = {
   setGlobalLoginInfo: setGlobalLoginInfo,
   strIsEmpty: strIsEmpty,
   isLogin: isLogin,
-  setLoginStatus: setLoginStatus,
   formatTime: formatTime,
   setGlobalUserInfoByServer: setGlobalUserInfoByServer
 }

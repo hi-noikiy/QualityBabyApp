@@ -16,7 +16,6 @@ App({
       stuId: null,
       tellNum: null,
       className: null,
-      gender: null,
       stuName: null,
       openId: null,
       signUpTime: null,
@@ -25,9 +24,6 @@ App({
     loginInfo: {
       openId: null,
       sessionKey: null
-    },
-    judge:{
-      isLogin:false
     }
   }
 })

@@ -105,7 +105,6 @@ Page({
       var messageListTemp = e.data.list;
       // 创建对象数组
       var messageList = (that.data.messageNextNum <= 1) ? new Array() : that.data.messageList;
-      console.log(messageList)
       // 标记当前长度
       var index = (that.data.messageNextNum <= 1) ? 0 : that.data.messageList.length;
       // 遍历数组

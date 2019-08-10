@@ -1,0 +1,41 @@
+.grace-qn-step {
+  margin: 15px 0;
+  line-height: 30px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 26px;
+  font-style: italic;
+  color: #3688ff;
+}
+
+.grace-qn-step text {
+  font-size: 18px;
+  color: #555;
+}
+
+.grace-qn-swiper {
+  width: 750rpx;
+}
+
+.grace-qn-in {
+  width: 90%;
+  margin: 0 5%;
+  height: 300px;
+}
+
+.grace-qn-q {
+  text-align: center;
+  font-weight: 700;
+  color: #555;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.grace-footer {
+  background: #3688ff;
+  color: #fff;
+  font-size: 16px;
+  line-height: 90rpx;
+  text-align: center;
+  justify-content: center;
+}

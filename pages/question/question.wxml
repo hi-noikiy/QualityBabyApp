@@ -1,0 +1,44 @@
+<view class='grace-qn-step'>
+  {{currentQN + 1}} /
+  <text>{{qns.length}}</text>
+</view>
+<view class="grace-form">
+  <form bindsubmit="formSubmit">
+    <swiper class="grace-qn-swiper" current="{{currentQN}}" bindchange="swiperChange" style="height:{{swiperHeight}}px;">
+      <swiper-item wx:for="{{qns}}" wx:key="index">
+        <view class='grace-qn-in' style="height:{{swiperHeight}}px;">
+          <!-- 提问的语句 -->
+          <view class='grace-qn-q'>{{item.questionDetail}}</view>
+          <!-- 答案 -->
+          <view class="grace-items" style="margin:15px 0; border:0;">
+            <view class="grace-label-y">
+              <radio-group name="{{item.questionId}}">
+                <label style="margin:15px 0;">
+                  <radio value="5"></radio>完全同意
+                </label>
+                <label style="margin:15px 0;">
+                  <radio value="4"></radio>同意
+                </label>
+                <label style="margin:15px 0;">
+                  <radio value="3"></radio>中立
+                </label>
+                <label style="margin:15px 0;">
+                  <radio value="2"></radio>不同意
+                </label>
+                <label style="margin:15px 0;">
+                  <radio value="1"></radio>完全不同意
+                </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="grace-footer" wx:if="{{currentQN + 1 < qns.length}}" bindtap="next">
+      下一题
+    </view>
+    <view class="grace-footer" wx:if="{{currentQN + 1 >= qns.length}}">
+      <button form-type="submit" type='warn' style="width:100%;">提交</button>
+    </view>
+  </form>
+</view>

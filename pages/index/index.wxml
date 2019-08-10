@@ -4,8 +4,7 @@
   <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
     <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
       <view class="swiper-item">
-        <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-        <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+        <image src="{{item.activityImg}}" mode="aspectFill" ></image>
       </view>
     </swiper-item>
   </swiper>
@@ -45,13 +44,13 @@
   <view class="cu-list grid col-4 no-border  bg-green light">
     <view class='group-menu' wx:for="{{activityGroupList}}" wx:key="{{item.groupId}}">
       <view class='group-element'>
-        <view class="cu-avatar " style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
+        <view class="cu-avatar" style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
         <view>{{item.groupName}}</view>
       </view>
     </view>
     <view class='group-menu'>
       <view class='group-element'>
-        <wux-icon type="ios-more" size="26"style="font-size:26px;" />
+        <wux-icon  type="ios-more" size="26" style="font-size:26px;" />
         <view>更多活动</view>
       </view>
     </view>

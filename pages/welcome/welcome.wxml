@@ -1,0 +1,46 @@
+<!-- 这个欢迎界面只是为了在进入的时候判断一些东西以及注册用户 -->
+<!-- 用户欢迎界面，如果已经注册则显示这个界面当做背景 -->
+<!-- <view hidden='{{!isSave}}'>
+  <view class="flex-sub text-center  margin-top">
+    <image src='http://cas.swust.edu.cn/authserver/images/logoImg.png' style='height:168rpx'></image>
+    <view class="solid-bottom text-xl padding">
+      <text class="text-black text-bold">欢迎来到西南科技大学</text>
+    </view>
+  </view>
+</view> -->
+<!-- 用户注册界面 -->
+<view >
+  <!-- 这一页的标题 -->
+  <view class="flex-sub text-center  margin-top">
+    <view class="solid-bottom text-xl padding">
+      <text class="text-black text-bold">请先提交您的个人信息</text>
+    </view>
+  </view>
+  <form bindsubmit="submit">
+    <view class="cu-form-group margin-top">
+      <view class="title">姓名</view>
+      <input bindinput='inputName' placeholder="你的名字"></input>
+    </view>
+    <view class="cu-form-group ">
+      <view class="title">班级</view>
+      <input bindinput='inputClass' placeholder="你的班级"></input>
+    </view>
+    <view class="cu-form-group ">
+      <view class="title">学号</view>
+      <input bindinput='inputStuId' placeholder="你的学号"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">手机号码</view>
+      <input bindinput='inputTellNumber' type="number" placeholder="你的手机号码"></input>
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-blue">
+          +86
+        </view>
+        <view class="cu-tag line-blue">
+          中国大陆
+        </view>
+      </view>
+    </view>
+    <button form-type="submit" class=" margin-top cu-btn bg-green lg" style="width:100%;">提交个人资料</button>
+  </form>
+</view>

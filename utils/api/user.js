@@ -3,6 +3,10 @@ var http = require("../http.js")
 function getUser(userId, success) {
   http.getRequest("/user/" + userId, success)
 }
+function getUserByOpenId(openId,success){
+  http.postRequest("/user/openId?openId=" + openId, success)
+}
 module.exports = {
-  getUser: getUser
+  getUser: getUser,
+  getUserByOpenId: getUserByOpenId
 }
