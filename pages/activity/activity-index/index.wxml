@@ -1,2 +1,46 @@
-<!--pages/activity/activity-index/index.wxml-->
-<text>活动主页</text>
+<!-- <wux-wing-blank> -->
+<wux-accordion-group accordion='true' bind:change="changeGroup">
+  <wux-accordion wx:for="{{groupList}}" prefixCls="text-lg bg-green light wux-accordion" wx:key="{{item.groupId}}" key="{{item.groupId}}" thumb="{{item.groupIcon}}" title="{{item.groupName}}">
+    <view wx:for="{{activityList[groupIndex].list}}" wx:key="{{item.activityId}}">
+      <view class="cu-card case {{isCard?'no-card':''}}">
+        <view class="cu-item shadow bg-green light">
+          <view class="image">
+            <image src="{{item.activityImg}}" mode="widthFix"></image>
+            <!-- <view class="cu-tag bg-blue">史诗</view>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut">
+      {{item.activityInformation}}</text>
+            </view> -->
+          </view>
+          <view class="cu-list menu-avatar activityText">
+            <view>
+              <wux-white-space />
+              <view class="content flex-sub">
+                <view class="text-black text-xxl">{{item.activityName}}</view>
+                <view class="text-black text-lg flex padding justify-between  margin-top">
+                  {{item.activityInformation}}
+                </view>
+              </view>
+              <!-- 截止报名至 -->
+              <view class="solid-bottom text-sm padding">
+                <text class="text-grey">截止报名至{{item.activityEndSignUp}}</text>
+              </view>
+              <!-- 报名按钮 -->
+              <view class="flex justify-end">
+                <text class="text-xl margin-right text-grey">已报名<text class=" text-red">{{item.activitySignInNum}}/{{item.activityPersonNum}}</text></text>
+                <view class=" ">
+                  <button class="cu-btn bg-green margin-right" bindtap="signIn" data-id="{{item.activityId}}">立即报名
+                  </button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view wx:hidden="!{{activityList[groupIndex].isLastPage}}">
+      <wux-divider text="没有活动了哦" />
+    </view> -->
+  </wux-accordion>
+</wux-accordion-group>
+<!-- </wux-wing-blank> -->

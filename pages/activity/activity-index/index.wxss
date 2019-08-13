@@ -1,1 +1,3 @@
-/* pages/activity/activity-index/index.wxss */
+.activityText{
+  margin-bottom:25rpx;
+}

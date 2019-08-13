@@ -1,5 +1,6 @@
 var _self;
-var questionApi=require("../../utils/api/question.js")
+var questionApi = require("../../utils/api/question.js")
+var util = require("../../utils/util.js")
 Page({
   data: {
     currentQN: 0, // 当前题目
@@ -12,12 +13,12 @@ Page({
       }
     ], // 问卷数据
   },
-  onLoad: function(res) {
+  onLoad: function (res) {
     _self = this;
     // 加载问卷信息
-    questionApi.getQuestion((res)=>{
+    questionApi.getQuestion((res) => {
       _self.setData({
-        qns:res.data
+        qns: res.data
       })
     })
     // wx.request({
@@ -30,7 +31,7 @@ Page({
     // });
     // 计算屏幕高度
     wx, wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         // swiper 高度 = 屏幕高度 - 顶部步骤高度 - 底部按钮高度
         _self.setData({
           swiperHeight: res.screenHeight - 180
@@ -38,21 +39,18 @@ Page({
       }
     });
   },
-  swiperChange: function(e) {
-    console.log(e.detail)
+  swiperChange: function (e) {
     this.setData({
       currentQN: e.detail.current
     });
   },
-  formSubmit: function(e) {
-    console.log(e.detail)
+  formSubmit: function (e) {
     //检查数据
     var data = e.detail.value;
     var checkError = false;
     var errorIndex = 0;
     for (var k in data) {
       if (data[k] == '' || data[k].length < 1) {
-        console.log('no');
         checkError = k;
         break;
       }
@@ -68,13 +66,28 @@ Page({
       });
       return;
     }
-
-    wx.showToast({
-      title: '请观察控制台',
-    });
-    console.log(data);
+    // 全部问题已经回答完毕
+    var result = new Array();
+    var i = 0;
+    for (var questionId in data) {
+      result[i]=new Object();
+      result[i].questionId = questionId;
+      result[i].answerRank = data[questionId];
+      result[i].userId = util.getGlobalUserInfo().userId;
+      // result[i].answerTime=new Date();
+      i++;
+    }
+    questionApi.answerQuestion(result,(res)=>{
+      wx.showToast({
+        title: '提交成功',
+        icon:'success'
+      })
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    })
   },
-  next: function() {
+  next: function () {
     this.setData({
       currentQN: this.data.currentQN + 1
     });

@@ -37,17 +37,17 @@ Page({
     }],
     cardCur: 0, // 轮播图当前展示页
     swiperList: [{
-      activityId: 10,
-      activityName: "活动名1223456",
-      activityInformation: "活动结合少",
-      activityImg: "https://pangyuworld.github.io/assets/p4YBAFtjvnOAa7uqAABMXc2dvOk667_n-1557808233634.jpg",
-      activityPersonNum: 11,
-      activityStart: "2019-07-05 16:21:35",
-      activityEnd: "2019-07-05 16:21:37",
-      activityStartSignUp: "2019-07-05 16:21:40",
-      activityEndSignUp: "2019-07-05 16:21:42",
-      activityShow: true,
-      groupId: 1,
+      activityId: null,
+      activityName: null,
+      activityInformation: null,
+      activityImg: null,
+      activityPersonNum: null,
+      activityStart: null,
+      activityEnd: null,
+      activityStartSignUp: null,
+      activityEndSignUp: null,
+      activityShow: null,
+      groupId: null,
     }],
   },
   onLoad() {
@@ -140,11 +140,13 @@ Page({
         if (!util.strIsEmpty(res.data)) {
           util.setGlobalUserInfoByServer(res.data)
           // 判断是否回答了问卷
-          indexApi.judgeAnswered(res.data.userId, () => {
+          indexApi.judgeAnswered(res.data.userId, (qres) => {
             // 如果没有回答问卷，则跳转到回答问卷页面
-            wx.navigateTo({
-              url: '/pages/question/question',
-            })
+            if (!qres.data) {
+              wx.navigateTo({
+                url: '/pages/question/question',
+              })
+            }
           })
         } else {
           // 否则进入一个注册界面
@@ -200,6 +202,48 @@ Page({
       that.setData({
         swiperList: e.data.list
       })
+    })
+  },
+  /**
+   * 切换到活动界面
+   */
+  toActivity:function(){
+    wx.switchTab({
+      url: '/pages/activity/activity-index/index',
+    })
+  },
+  /**
+   * 切换到留言界面
+   */
+  toMessage:function(){
+    wx.switchTab({
+      url: '/pages/message/message-index/index',
+    })
+  },
+  /**
+   * 切换到问卷详情
+   */
+  toQuestion:function(){
+    wx.showToast({
+      title: '功能未开通',
+      icon:'loading'
+    })
+  },
+  /**
+   * 切换到雷达图
+   */
+  toAspect:function(){
+    wx.showToast({
+      title: '功能未开通',
+      icon: 'loading'
+    })
+  },
+  /**
+   * 切换到个人信息
+   */
+  toMine:function(){
+    wx.switchTab({
+      url: '/pages/mine/mine-index/index',
     })
   }
 })

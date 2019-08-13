@@ -4,10 +4,10 @@
   <wux-wing-blank>
     <form>
       <view class="cu-form-group margin-top">
-        <textarea maxlength="255" bindinput="inputMessage" placeholder="多行文本输入框"></textarea>
+        <textarea maxlength="255" bindinput="inputMessage" value='{{messageContent}}' placeholder="多行文本输入框"></textarea>
       </view>
       <view class='from-button'>
-        <button class="cu-btn bg-green round" style='margin-right:20rpx;margin-bottom:20rpx;'>留言</button>
+        <button bindtap='addMessage' class="cu-btn bg-green round" style='margin-right:20rpx;margin-bottom:20rpx;'>留言</button>
       </view>
     </form>
   </wux-wing-blank>
@@ -18,6 +18,9 @@
         <wux-cell class='message-element' title="{{item.user.stuName}}">
           <view slot="footer">
             <text>{{item.messageTime}}</text>
+            <button wx:if="{{item.userId==userId}}" class="cu-btn icon line-red" style='margin-left:10rpx;width:30rpx;height:30rpx;' bindtap="deleteMessage" data-id="{{item.messageId}}">
+              <text class="cuIcon-close"></text>
+            </button>
           </view>
           <view slot="header">
             <view class="cu-avatar round" style="background-image:url({{item.user.userIcon}}); margin-right:15rpx;"></view>
@@ -26,6 +29,27 @@
         <view style='margin-left:30rpx;margin-right:30rpx;'>{{item.messageDetail}}</view>
       </view>
       <wux-white-space />
+      <wux-divider wx:if="!{{hasNextPage}}"  text="已经到底啦" />
     </view>
   </wux-wing-blank>
+</view>
+<!-- 提示删除窗口 -->
+<view class="cu-modal {{showDeleteModel?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确认删除</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      是否删除该留言？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-red margin-left" bindtap="realDelete">确定</button>
+      </view>
+    </view>
+  </view>
 </view>

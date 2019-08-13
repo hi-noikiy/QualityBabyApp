@@ -24,6 +24,30 @@ function baseHttp(url, method, onSuccess, onFaile) {
     }
   })
 }
+// 为回答问题专门准备的访问
+function postRequestJson(url,data,onSuccess,onFaile){
+  wx.showLoading({
+    title: '加载中',
+  })
+  wx.request({
+    url: rootDocment + url,
+    method: "post",
+    data: data,
+    success: function (res) {
+      wx.hideLoading();
+      onSuccess(res.data)
+    },
+    fail: function () {
+      wx.hideLoading();
+      wx.showModal({
+        title: '网络错误',
+        content: '网络出错，请刷新重试',
+        showCancel: false
+      })
+      onFaile(res.data)
+    }
+  })
+}
 //get访问
 function getRequest(url, onSuccess, onFaile) {
   baseHttp(url, 'get', onSuccess, onFaile)
@@ -44,5 +68,6 @@ module.exports = {
   getRequest: getRequest,
   postRequest: postRequest,
   deleteRequest: deleteRequest,
-  putRequest: putRequest
+  putRequest: putRequest,
+  postRequestJson: postRequestJson
 }

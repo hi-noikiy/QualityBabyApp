@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/question/question",
     "pages/index/index",
     "pages/activity/activity-index/index",
     "pages/message/message-index/index",
     "pages/mine/mine-index/index",
-    "pages/welcome/welcome"
+    "pages/welcome/welcome",
+    "pages/question/question",
+    "pages/mine/radar/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -62,6 +63,9 @@
     "wux-col": "../../dist/col/index",
     "wux-image": "../../dist/image/index",
     "wux-button": "../../dist/button/index",
-    "wux-dialog": "../../dist/dialog/index"
+    "wux-dialog": "../../dist/dialog/index",
+    "wux-accordion-group": "../../dist/accordion-group/index",
+    "wux-accordion": "../../dist/accordion/index",
+    "wux-divider": "../../dist/divider/index"
   }
 }

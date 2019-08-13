@@ -15,25 +15,25 @@
 <view style='background:#D7F0DB'>
   <!-- 基础功能 -->
   <view class="cu-list grid col-4 no-border bg-green light">
-    <view class='group-menu'>
+    <view bindtap="toQuestion" class='group-menu'>
       <view class='group-element'>
         <wux-icon type="ios-apps" size="26" />
         <view>问卷详情</view>
       </view>
     </view>
-    <view class='group-menu'>
+    <view bindtap="toAspect" class='group-menu'>
       <view class='group-element'>
         <wux-icon type="ios-appstore" size="26" />
         <view>雷达图</view>
       </view>
     </view>
-    <view class='group-menu'>
+    <view bindtap="toMessage"  class='group-menu'>
       <view class='group-element'>
         <wux-icon type="ios-baseball" size="26" />
         <view>留言板</view>
       </view>
     </view>
-    <view class='group-menu'>
+    <view bindtap="toMine" class='group-menu'>
       <view class='group-element'>
         <wux-icon type="ios-beer" size="26" />
         <view>我的信息</view>
@@ -42,15 +42,15 @@
   </view>
   <!-- 活动 -->
   <view class="cu-list grid col-4 no-border  bg-green light">
-    <view class='group-menu' wx:for="{{activityGroupList}}" wx:key="{{item.groupId}}">
+    <view bindtap="toActivity" class='group-menu' wx:for="{{activityGroupList}}" wx:key="{{item.groupId}}">
       <view class='group-element'>
-        <view class="cu-avatar" style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
+        <view  class="cu-avatar" style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
         <view>{{item.groupName}}</view>
       </view>
     </view>
-    <view class='group-menu'>
+    <view bindtap="toActivity" class='group-menu'>
       <view class='group-element'>
-        <wux-icon  type="ios-more" size="26" style="font-size:26px;" />
+        <wux-icon bindtap="toActivity"  type="ios-more" size="26" style="font-size:26px;" />
         <view>更多活动</view>
       </view>
     </view>
