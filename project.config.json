@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -84,6 +84,19 @@
 					"name": "pages/mine/radar/index",
 					"pathName": "pages/mine/radar/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/radar-detail/index",
+					"pathName": "pages/mine/radar-detail/index",
+					"query": "9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人主页",
+					"pathName": "pages/mine/mine-index/index",
 					"scene": null
 				}
 			]

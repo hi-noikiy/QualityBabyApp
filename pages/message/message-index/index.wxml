@@ -17,7 +17,7 @@
       <view wx:for="{{messageList}}" wx:key="{{item.messageKey}}">
         <wux-cell class='message-element' title="{{item.user.stuName}}">
           <view slot="footer">
-            <text>{{item.messageTime}}</text>
+            <text class="text-grey">{{item.messageTime}}</text>
             <button wx:if="{{item.userId==userId}}" class="cu-btn icon line-red" style='margin-left:10rpx;width:30rpx;height:30rpx;' bindtap="deleteMessage" data-id="{{item.messageId}}">
               <text class="cuIcon-close"></text>
             </button>

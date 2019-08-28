@@ -6,7 +6,8 @@
     "pages/mine/mine-index/index",
     "pages/welcome/welcome",
     "pages/question/question",
-    "pages/mine/radar/index"
+    "pages/mine/radar/index",
+    "pages/mine/radar-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

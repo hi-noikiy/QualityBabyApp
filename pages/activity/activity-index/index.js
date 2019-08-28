@@ -126,7 +126,7 @@ Page({
   getActivity: function() {
     var that = this
     var groupIndex = that.data.groupIndex
-    var pageNum = util.strIsEmpty(that.data.activityList[groupIndex]) ? 1 : that.data.activityList[groupIndex]
+    var pageNum = util.strIsEmpty(that.data.activityList[groupIndex]) ? 1 : that.data.activityList[groupIndex].pageNum
     if (util.strIsEmpty(groupIndex)) {
       // 如果没有打开任何东西，则不执行
       return
@@ -169,6 +169,11 @@ Page({
           title: '报名成功',
           icon: "success"
         })
+        that.setData({
+          ['activityList['+that.data.groupIndex+'].isLastPage']:false,
+          ['activityList[' + that.data.groupIndex + '].pageNum']:1
+        })
+        that.getActivity();
       }
     })
   }

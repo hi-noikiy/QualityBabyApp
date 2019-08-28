@@ -4,7 +4,7 @@
   <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
     <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
       <view class="swiper-item">
-        <image src="{{item.activityImg}}" mode="aspectFill" ></image>
+        <image src="{{item.activityImg}}" mode="aspectFill"></image>
       </view>
     </swiper-item>
   </swiper>
@@ -27,7 +27,7 @@
         <view>雷达图</view>
       </view>
     </view>
-    <view bindtap="toMessage"  class='group-menu'>
+    <view bindtap="toMessage" class='group-menu'>
       <view class='group-element'>
         <wux-icon type="ios-baseball" size="26" />
         <view>留言板</view>
@@ -44,13 +44,13 @@
   <view class="cu-list grid col-4 no-border  bg-green light">
     <view bindtap="toActivity" class='group-menu' wx:for="{{activityGroupList}}" wx:key="{{item.groupId}}">
       <view class='group-element'>
-        <view  class="cu-avatar" style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
+        <view class="cu-avatar" style="background-image:url({{item.groupIcon}});font-size:26px;"></view>
         <view>{{item.groupName}}</view>
       </view>
     </view>
     <view bindtap="toActivity" class='group-menu'>
       <view class='group-element'>
-        <wux-icon bindtap="toActivity"  type="ios-more" size="26" style="font-size:26px;" />
+        <wux-icon bindtap="toActivity" type="ios-more" size="26" style="font-size:26px;" />
         <view>更多活动</view>
       </view>
     </view>
@@ -59,14 +59,25 @@
 <!-- 留白 -->
 <wux-white-space />
 <!-- 问卷排名 -->
-<view class="bg-green light">
-  <wux-wing-blank style="font-size:35rpx;">
+<view class="cu-list menu">
+  <!-- <wux-wing-blank style="font-size:35rpx;">
     <wux-cell title="我的排名" is-link>
       <view slot="footer">
         <text class='index-rank' space="ensp">10/120 </text>
       </view>
     </wux-cell>
-  </wux-wing-blank>
+  </wux-wing-blank> -->
+  <view class="cu-item bg-green light" style="background-color:#D7F0DB">
+    <view class="content">
+      <text class="cuIcon-circlefill text-grey"></text>
+      <text class="text-grey">我的排名</text>
+    </view>
+    <view class="action">
+      <view class="solid-bottom text-xxl padding">
+        <text class="text-red">10/120</text>
+      </view>
+    </view>
+  </view>
 </view>
 <!-- 留白 -->
 <wux-white-space />
@@ -76,10 +87,10 @@
     <wux-card full title="最近留言" prefixCls="bg-green light wux-card">
       <view slot="body">
         <view>
-          <view wx:for="{{messageList}}" wx:key="{{item.messageKey}}">
+          <view wx:for="{{messageList}}" wx:key="{{item.messageKey}}" class="margin-top">
             <wux-cell class='message-element' title="{{item.user.stuName}}">
               <view slot="footer">
-                <text>{{item.messageTime}}</text>
+                <text class="text-grey">{{item.messageTime}}</text>
               </view>
               <view slot="header">
                 <view class="cu-avatar round" style="background-image:url({{item.user.userIcon}}); margin-right:15rpx;"></view>

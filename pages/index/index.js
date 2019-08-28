@@ -233,10 +233,13 @@ Page({
    * 切换到雷达图
    */
   toAspect:function(){
-    wx.showToast({
-      title: '功能未开通',
-      icon: 'loading'
+    wx.navigateTo({
+      url: '/pages/mine/radar/index',
     })
+    // wx.showToast({
+    //   title: '功能未开通',
+    //   icon: 'loading'
+    // })
   },
   /**
    * 切换到个人信息

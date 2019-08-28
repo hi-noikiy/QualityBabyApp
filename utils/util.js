@@ -46,12 +46,24 @@ function isLogin() {
 //创建时间格式化显示
 function formatTime(value) {
   var date = new Date(value);
-  var n = date.getFullYear();
-  var y = date.getMonth() + 1;
-  var r = date.getDate();
-  var mytime = date.toLocaleTimeString();
-  var mytimes = n + "-" + y + "-" + r + " " + mytime;
-  return mytimes;
+  // var n = date.getFullYear();
+  // var y = date.getMonth() + 1;
+  // var r = date.getDate();
+  // var mytime = date.toLocaleTimeString();
+  // var mytimes = n + "-" + y + "-" + r + " " + mytime;
+  // return mytimes;
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 module.exports = {
   getGlobalUserInfo: getGlobalUserInfo,

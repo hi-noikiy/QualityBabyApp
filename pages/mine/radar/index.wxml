@@ -1,3 +1,10 @@
+<!-- 雷达图 -->
 <view class="container">
-    <canvas canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+  <canvas canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+</view>
+<view class="solid-bottom text-center text-lg padding">
+  <text class="text-black">个人雷达图</text>
+</view>
+<view class="solid-bottom text-center text-df">
+  <text class="text-grey">点击相应维度可查看详情</text>
 </view>

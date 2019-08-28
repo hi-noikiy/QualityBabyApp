@@ -1,36 +1,24 @@
-// pages/mine/mine-index/index.js
-var util = require("../../../utils/util.js")
+// pages/mine/radar-detail/index.js
+var radarApi = require("../../../utils/api/radar.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {
-      avatarUrl: null,
-      city: null,
-      country: null,
-      gender: null,
-      language: null,
-      nickName: null,
-      province: null,
-      userId: null,
-      stuId: null,
-      tellNum: null,
-      className: null,
-      stuName: null,
-      openId: null,
-      signUpTime: null,
-      userIcon: null
-    },
+    aspectId: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 接收到界面参数信息，储存在变量区
     this.setData({
-      userInfo:util.getGlobalUserInfo()
+      aspectId: options.aspectId
+    })
+    radarApi.getAspectDetail(this.data.aspectId, (res) => {
+      console.log(res)
     })
   },
 

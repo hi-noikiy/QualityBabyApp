@@ -1,5 +1,6 @@
 // 路径配置
-const rootDocment = 'http://pang.yank-tenyond.cn';
+const rootDocment = 'https://pang.yank-tenyond.cn';
+// const rootDocment = 'http://47.108.73.173/api.php';
 // 基础http请求
 function baseHttp(url, method, onSuccess, onFaile) {
   wx.showLoading({

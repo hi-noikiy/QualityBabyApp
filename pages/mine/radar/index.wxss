@@ -1,1 +1,4 @@
-/* pages/mine/mine-index/index.wxss */
+.canvas {
+    width: 100%;
+    height: 400px;
+}
