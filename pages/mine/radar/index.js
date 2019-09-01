@@ -6,15 +6,16 @@ Page({
   data: {
     dataList: [],
     nameList: [],
-    aspectData: null
+    aspectData: null,
+    aspectDetailList: []
   },
   /**
    * 加载时候获得数据
    */
-  onLoad: function (e) {
+  onLoad: function(e) {
     var that = this
     radarApi.getAspect((res) => {
-      var aspectList=res.data
+      var aspectList = res.data
       var dataListTemp = new Array();
       var nameListTemp = new Array();
       // 将名称列表和数据列表赋值给临时变量
@@ -34,20 +35,24 @@ Page({
   /**
    * 点击雷达图事件
    */
-  touchHandler: function (e) {
+  touchHandler: function(e) {
     var touchIndex = radarChart.getCurrentDataIndex(e);
     var aspectList = this.data.aspectData;
-    wx.navigateTo({
-      url: "/pages/mine/radar-detail/index?aspectId=" + aspectList[touchIndex].aspect_id
+    var that = this
+    radarApi.getAspectDetail(aspectList[touchIndex].aspect_id, (res) => {
+      console.log(res)
+      that.setData({
+        aspectDetailList: res.data
+      })
     })
   },
-  onReady: function (e) {
+  onReady: function(e) {
 
   },
   /**
    * 绘制雷达图
    */
-  printRadar: function () {
+  printRadar: function() {
     var that = this
     var windowWidth = 320;
     try {

@@ -1,0 +1,70 @@
+<view class="cu-card dynamic no-card">
+  <view class="cu-item shadow " style="background-color:#f6ffed">
+    <view class="cu-list menu-avatar" style="background-color:#D7F0DB;padding-top:30rpx;">
+      <view class="cu-item " style="background-color:#D7F0DB">
+        <view class="cu-avatar round lg" style="background-image:url({{userInfo.avatarUrl}});"></view>
+        <view class="content flex-sub">
+          <view>{{userInfo.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between">
+            {{userInfo.className}}-{{userInfo.stuName}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-list menu ">
+      <view class="cu-item " style="background-color:#D7F0DB">
+        <view class="content info-text">
+          <text class="text-grey">微信名</text>
+        </view>
+        <view class="action right-text">
+          <input class="text-grey text-sm" value="{{userInfo.nickName}}" disabled='true' ></input>
+        </view>
+      </view>
+      <view class="cu-item " style="background-color:#D7F0DB" >
+        <view class="content info-text">
+          <text class="text-grey" >真实姓名</text>
+        </view>
+        <view class="action right-text">
+          <input class="text-grey text-sm" value='{{userInfo.stuName}}' bindblur="changeName"></input>
+        </view>
+      </view>
+      <view class="cu-item " style="background-color:#D7F0DB">
+        <view class="content info-text">
+          <text class="text-grey">性别</text>
+        </view>
+        <picker bindchange="changeGender" class="action right-text" range="{{genders}}" value="{{userInfo.gender}}">
+          <view class="text-grey text-sm">
+            {{genders[userInfo.gender]}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-item  " style="background-color:#D7F0DB" >
+        <view class="content info-text">
+          <text class="text-grey">年级班级</text>
+        </view>
+        <view class="action right-text">
+          <input class="text-grey text-sm" value="{{userInfo.className}}"  bindblur="changeClass"></input>
+        </view>
+      </view>
+      <view class="cu-item " style="background-color:#D7F0DB">
+        <view class="content info-text">
+          <text class="text-grey">电话号码</text>
+        </view>
+        <view class="action right-text">
+          <input class="text-grey text-sm" value="{{userInfo.tellNum}}"  bindblur="changeTellNum"></input>
+        </view>
+      </view>
+      <view class="cu-item " style="background-color:#D7F0DB">
+        <view class="content info-text">
+          <text class="text-grey">学号</text>
+        </view>
+        <view class="action right-text">
+          <input class="text-grey text-sm" value="{{userInfo.stuId}}"  bindblur="changeStuId"></input>
+        </view>
+      </view>
+      <view class="padding flex flex-direction">
+        <button class="cu-btn bg-green margin-tb-sm lg" bindtap="submit">确认修改个人资料</button>
+      </view>
+    </view>
+  </view>
+</view>

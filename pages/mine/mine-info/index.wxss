@@ -1,0 +1,12 @@
+.info-text {
+  text-align: justify;
+  width: 125rpx;
+  text-align-last: justify;
+  display: inline-block;
+  padding-right:400rpx; 
+}
+
+.right-text{
+  width: 150rpx;
+  text-align: right;
+}

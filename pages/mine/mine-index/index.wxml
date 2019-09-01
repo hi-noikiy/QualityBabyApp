@@ -14,7 +14,6 @@
     <view class="cu-list menu">
       <view class="cu-item margin-top" style="background-color:#D7F0DB">
         <view class="content">
-          <text class="cuIcon-circlefill text-grey"></text>
           <text class="text-grey">我的排名</text>
         </view>
         <view class="action">
@@ -23,36 +22,31 @@
           </view>
         </view>
       </view>
-      <view class="cu-item arrow margin-top" style="background-color:#D7F0DB">
+      <view class="cu-item arrow margin-top" style="background-color:#D7F0DB" bindtap="userInfo">
         <view class="content">
-          <text class="cuIcon-emojiflashfill text-pink"></text>
           <text class="text-grey">我的资料</text>
         </view>
         <view class="action">
           <text class="text-grey text-sm"></text>
         </view>
       </view>
-      <view class="cu-item arrow  " style="background-color:#D7F0DB">
+      <view class="cu-item arrow  " style="background-color:#D7F0DB" bindtap="questionInfo">
         <view class="content">
-          <image src="/images/logo.png" class="png" mode="aspectFit"></image>
           <text class="text-grey">我的问卷</text>
         </view>
       </view>
-      <view class="cu-item arrow" style="background-color:#D7F0DB">
-        <button class="cu-btn content" open-type="contact">
-          <text class="cuIcon-btn text-olive"></text>
+      <view class="cu-item arrow" style="background-color:#D7F0DB" bindtap="activityInfo">
+        <button class="cu-btn content" >
           <text class="text-grey">我的活动</text>
         </button>
       </view>
-      <view class="cu-item arrow" style="background-color:#D7F0DB">
-        <navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
-          <text class="cuIcon-discoverfill text-orange"></text>
+      <view class="cu-item arrow" style="background-color:#D7F0DB" bindtap="radarInfo">
+        <navigator class="content" hover-class="none" url="../list/list" >
           <text class="text-grey">我的雷达图</text>
         </navigator>
       </view>
-      <view class="cu-item arrow margin-top" style="background-color:#D7F0DB">
+      <view class="cu-item arrow margin-top" style="background-color:#D7F0DB" bindtap="aboutUs">
         <view class="content">
-          <text class="cuIcon-emojiflashfill text-pink"></text>
           <text class="text-grey">关于我们</text>
         </view>
         <view class="action">

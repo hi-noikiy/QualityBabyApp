@@ -168,7 +168,6 @@ Page({
    * 删除留言
    */
   deleteMessage: function (e) {
-    console.log(e)
     this.setData({
       showDeleteModel:true,
       willDeleteId: e.currentTarget.dataset.id

@@ -81,5 +81,45 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 我的资料
+   */
+  userInfo: function () {
+    wx.navigateTo({
+      url: '/pages/mine/mine-info/index',
+    })
+  },
+  /**
+   * 我的问卷
+   */
+  questionInfo: function () {
+    wx.showToast({
+      title: '功能未开通',
+      icon: 'loading'
+    })
+  },
+  /**
+   * 我的活动
+   */
+  activityInfo: function () {
+    wx.navigateTo({
+      url: '/pages/mine/mine-activity/index',
+    })
+    // console.log("点击了我的活动")
+  },
+  /**
+   * 我的雷达图
+   */
+  radarInfo: function () {
+    wx.navigateTo({
+      url: '/pages/mine/radar/index',
+    })
+  },
+  /**
+   * 我的资料
+   */
+  aboutUs: function () {
+    console.log("关于我们")
   }
 })

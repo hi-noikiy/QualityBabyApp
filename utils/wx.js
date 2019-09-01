@@ -45,8 +45,18 @@ function signIn(userInfo, success, faile) {
     + "&gender=" + userInfo.gender
     + "&stuName=" + userInfo.stuName, success, faile)
 }
+function updateUserInfo(userInfo,success,faile){
+  http.putRequest("/user?userIcon=" + userInfo.userIcon
+    + "&openId=" + userInfo.openId
+    + "&stuId=" + userInfo.stuId
+    + "&tellNum=" + userInfo.tellNum
+    + "&className=" + userInfo.className
+    + "&gender=" + userInfo.gender
+    + "&stuName=" + userInfo.stuName, success, faile)
+}
 module.exports = {
   login: login,
   getUserInfo: getUserInfo,
-  signIn: signIn
+  signIn: signIn,
+  updateUserInfo: updateUserInfo
 }

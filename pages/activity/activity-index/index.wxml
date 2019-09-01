@@ -1,7 +1,19 @@
+
+<!-- 轮播图 -->
+<view>
+  <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+      <view class="swiper-item">
+        <image src="{{item.activityImg}}" mode="aspectFill"></image>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
 <!-- <wux-wing-blank> -->
 <wux-accordion-group accordion='true' bind:change="changeGroup">
-  <wux-accordion wx:for="{{groupList}}" prefixCls="text-lg bg-green light wux-accordion" wx:key="{{item.groupId}}" key="{{item.groupId}}" thumb="{{item.groupIcon}}" title="{{item.groupName}}">
-    <view wx:for="{{activityList[groupIndex].list}}" wx:key="{{item.activityId}}">
+  <wux-accordion  wx:for="{{groupList}}" prefixCls="text-lg bg-green light wux-accordion" wx:key="{{item.groupId}}" key="{{item.groupId}}" thumb="{{item.groupIcon}}" title="{{item.groupName}}">
+    <view wx:for="{{activityList[groupIndex].list}}" wx:key="{{item.activityId}}" >
       <view class="cu-card case {{isCard?'no-card':''}}">
         <view class="cu-item shadow bg-green light">
           <view class="image">

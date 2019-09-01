@@ -1,0 +1,56 @@
+<view wx:for="{{activityList}}" wx:key="{{item.activityId}}">
+  <view class="cu-card case {{isCard?'no-card':''}}">
+    <view class="cu-item shadow bg-green light" style="padding:30rpx;">
+      <view class="image">
+        <image src="{{item.activityImg}}" mode="widthFix"></image>
+        <!-- <view class="cu-tag bg-blue">史诗</view>
+            <view class="cu-bar bg-shadeBottom">
+              <text class="text-cut">
+      {{item.activityInformation}}</text>
+            </view> -->
+      </view>
+      <view class="cu-list menu-avatar activityText">
+        <view>
+          <wux-white-space />
+          <view class="content flex-sub">
+            <view class="text-black text-xxl">{{item.activityName}}</view>
+            <view class="text-black text-lg flex padding justify-between  margin-top">
+              {{item.activityInformation}}
+            </view>
+          </view>
+          <!-- 截止报名至 -->
+          <view class="solid-bottom text-sm padding">
+            <text class="text-grey">我报名的时间：{{item.joinTime}}</text>
+          </view>
+          <!-- 取消报名按钮 -->
+          <view class="flex justify-end">
+            <view class=" ">
+              <button class="cu-btn bg-red margin-right" bindtap="signOut" data-id="{{item.activityId}}">取消报名
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 提示删除窗口 -->
+<view class="cu-modal {{showDeleteModel?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">确认删除</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      是否退出该活动？
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-red margin-left" bindtap="realDelete">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

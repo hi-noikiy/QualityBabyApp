@@ -14,7 +14,7 @@ function setGlobalUserInfo(userInfo) {
   getApp().globalData.userInfo.language = userInfo.language;
   getApp().globalData.userInfo.nickName = userInfo.nickName;
   getApp().globalData.userInfo.province = userInfo.province;
-  getApp().globalData.userInfo.gender = userInfo.gender==1?true:false;
+  getApp().globalData.userInfo.gender = userInfo.gender;
 }
 // 设置全局的用户信息(获取后台的用户信息)
 function setGlobalUserInfoByServer(userInfo) {
